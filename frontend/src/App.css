@@ -1,0 +1,660 @@
+:root {
+  /* Shape + motion */
+  --radius: 16px;
+  --transition: 280ms ease;
+
+  /* Brand */
+  --primary: hsl(174 78% 26%); /* bottle green */
+  --primary-soft: hsl(152 66% 45%);
+  --danger: hsl(0 84% 60%);
+  --danger-2: hsl(0 72% 51%);
+
+  /* Light theme (default) */
+  --bg-color: hsl(156 40% 98%);
+  --bg-color-2: hsl(156 36% 96%);
+  --text-color: hsl(222 47% 12%);
+  --text-secondary: hsl(222 20% 32%);
+  --text-tertiary: hsl(222 14% 44%);
+  --border-color: hsl(222 18% 82%);
+
+  --surface-1: hsla(222, 18%, 15%, 0.04);
+  --surface-2: hsla(222, 18%, 15%, 0.06);
+  --surface-3: hsla(222, 18%, 15%, 0.08);
+
+  --card-bg: hsl(0 0% 100%);
+  --card-bg-2: hsl(156 30% 99%);
+  --card-border: hsla(222, 18%, 15%, 0.10);
+
+  --input-bg: hsl(0 0% 100%);
+  --input-border: hsla(222, 18%, 15%, 0.14);
+  --placeholder-color: hsl(222 12% 50%);
+
+  --shadow: 0 16px 40px hsla(222, 47%, 12%, 0.10);
+  --shadow-strong: 0 18px 44px hsla(222, 47%, 12%, 0.16);
+
+  /* Gradients/glows */
+  --bg-glow-a: hsla(174, 78%, 26%, 0.14);
+  --bg-glow-b: hsla(152, 66%, 45%, 0.10);
+  --topbar-tint: hsla(222, 47%, 12%, 0.03);
+
+  /* Links */
+  --link-color: hsl(222 47% 14%);
+  --link-underline: hsla(152, 66%, 35%, 0.35);
+  --link-underline-hover: hsla(152, 66%, 35%, 0.70);
+
+  /* Avatar fallback */
+  --avatar-sat: 44%;
+  --avatar-lit: 34%;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --bg-color: hsl(160 45% 6%);
+  --bg-color-2: hsl(160 45% 8%);
+  --text-color: hsla(0, 0%, 100%, 0.92);
+  --text-secondary: hsla(0, 0%, 100%, 0.72);
+  --text-tertiary: hsla(0, 0%, 100%, 0.58);
+  --border-color: hsla(0, 0%, 100%, 0.12);
+
+  --surface-1: hsla(0, 0%, 100%, 0.06);
+  --surface-2: hsla(0, 0%, 100%, 0.09);
+  --surface-3: hsla(0, 0%, 100%, 0.12);
+
+  --card-bg: linear-gradient(180deg, hsla(0, 0%, 100%, 0.09), hsla(0, 0%, 100%, 0.05));
+  --card-bg-2: hsla(0, 0%, 100%, 0.06);
+  --card-border: hsla(0, 0%, 100%, 0.12);
+
+  --input-bg: hsla(0, 0%, 100%, 0.06);
+  --input-border: hsla(0, 0%, 100%, 0.12);
+  --placeholder-color: hsla(0, 0%, 100%, 0.45);
+
+  --shadow: 0 16px 40px hsla(0, 0%, 0%, 0.35);
+  --shadow-strong: 0 18px 44px hsla(0, 0%, 0%, 0.45);
+
+  --bg-glow-a: hsla(174, 78%, 26%, 0.22);
+  --bg-glow-b: hsla(152, 66%, 45%, 0.12);
+  --topbar-tint: hsla(0, 0%, 0%, 0.06);
+
+  --link-color: hsla(0, 0%, 100%, 0.90);
+  --link-underline: hsla(152, 66%, 45%, 0.35);
+  --link-underline-hover: hsla(152, 66%, 45%, 0.65);
+
+  --avatar-sat: 48%;
+  --avatar-lit: 28%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(1200px 700px at 20% -10%, var(--bg-glow-a), transparent 55%),
+    radial-gradient(900px 600px at 100% 0%, var(--bg-glow-b), transparent 60%),
+    linear-gradient(180deg, var(--bg-color), var(--bg-color-2));
+  color: var(--text-color);
+  transition: background var(--transition), color var(--transition);
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 22px 16px 16px;
+  background: linear-gradient(to bottom, var(--topbar-tint), transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 16px 36px;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.brandMark {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-soft));
+  box-shadow: 0 10px 30px hsla(174, 78%, 26%, 0.25);
+}
+
+.brandTitle {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.brandSubtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.topActions {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchWrap {
+  flex: 1;
+}
+
+.searchInput {
+  width: 100%;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-color);
+  padding: 0 14px;
+  outline: none;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.searchInput::placeholder {
+  color: var(--placeholder-color);
+}
+
+.searchInput:focus {
+  border-color: color-mix(in oklab, var(--primary) 55%, var(--input-border));
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.countPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.btnPrimary,
+.btnGhost,
+.btnSmall,
+.btnSmallDanger,
+.iconBtn {
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btnPrimary {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(135deg, var(--primary), color-mix(in oklab, var(--primary-soft) 55%, var(--primary)));
+  box-shadow: 0 14px 30px hsla(174, 78%, 26%, 0.18);
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.btnGhost {
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 12px;
+  color: var(--text-color);
+  background: var(--surface-1);
+  border: 1px solid var(--border-color);
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.btnGhost:hover {
+  background: var(--surface-2);
+  transform: translateY(-1px);
+}
+
+.btnGhost:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 26px color-mix(in oklab, var(--shadow) 60%, transparent);
+  overflow: hidden;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--primary) 30%, var(--card-border));
+  box-shadow: var(--shadow-strong);
+}
+
+.cardTop {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  padding: 14px 14px 12px;
+}
+
+.avatarWrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--surface-1);
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatarFallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.6px;
+  background: hsl(var(--avatar-hue, 174) var(--avatar-sat) var(--avatar-lit));
+}
+
+.cardBody {
+  min-width: 0;
+}
+
+.memberName {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.memberRole {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metaRow {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.metaLabel {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.metaValue {
+  font-size: 13px;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--link-underline);
+}
+
+.link:hover {
+  border-bottom-color: var(--link-underline-hover);
+}
+
+.muted {
+  color: var(--text-secondary);
+}
+
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 14px 14px;
+  border-top: 1px solid color-mix(in oklab, var(--border-color) 65%, transparent);
+}
+
+.btnSmall {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 12px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  transition: transform 150ms ease, background 150ms ease;
+}
+
+.btnSmall:hover {
+  transform: translateY(-1px);
+  background: var(--surface-2);
+}
+
+.btnSmallDanger {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--danger) 16%, transparent);
+  border: 1px solid color-mix(in oklab, var(--danger) 40%, var(--border-color));
+  color: var(--text-color);
+  transition: transform 150ms ease, background 150ms ease;
+}
+
+.btnSmallDanger:hover {
+  transform: translateY(-1px);
+  background: color-mix(in oklab, var(--danger) 22%, transparent);
+}
+
+.emptyState {
+  border-radius: var(--radius);
+  border: 1px dashed color-mix(in oklab, var(--border-color) 70%, transparent);
+  background: var(--surface-1);
+  padding: 30px 16px;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.emptySubtitle {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.alert {
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--danger) 35%, var(--border-color));
+  background: color-mix(in oklab, var(--danger) 12%, transparent);
+  padding: 14px 14px;
+  margin-bottom: 14px;
+}
+
+.alertTitle {
+  font-weight: 800;
+}
+
+.alertBody {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.skeletonCard {
+  height: 142px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  background: linear-gradient(
+    90deg,
+    var(--surface-1),
+    var(--surface-3),
+    var(--surface-1)
+  );
+  background-size: 240% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 0%, 0.55);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.modalCard {
+  width: min(720px, 100%);
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.modalBody {
+  padding: 12px 16px 0;
+}
+
+.confirmHint {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 10px;
+  border-bottom: 1px solid color-mix(in oklab, var(--border-color) 65%, transparent);
+}
+
+.modalTitle {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.modalSubtitle {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+}
+
+.iconBtn {
+  height: 34px;
+  width: 34px;
+  border-radius: 12px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 22px;
+  line-height: 0;
+}
+
+.iconBtn:hover {
+  background: var(--surface-2);
+}
+
+.form {
+  padding: 14px 16px 16px;
+}
+.formError {
+  margin-bottom: 12px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in oklab, var(--danger) 35%, var(--border-color));
+  background: color-mix(in oklab, var(--danger) 12%, transparent);
+  padding: 10px 12px;
+  color: var(--text-color);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.btnDanger {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(135deg, var(--danger), var(--danger-2));
+  box-shadow: 0 14px 30px color-mix(in oklab, var(--danger) 18%, transparent);
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.btnDanger:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.btnDanger:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.field input {
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--text-color);
+  padding: 0 12px;
+  outline: none;
+}
+
+.field input:focus {
+  border-color: color-mix(in oklab, var(--primary) 55%, var(--input-border));
+}
+
+.field input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.fieldError {
+  font-size: 12px;
+  color: var(--text-color);
+  background: color-mix(in oklab, var(--danger) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--danger) 28%, var(--border-color));
+  padding: 6px 10px;
+  border-radius: 12px;
+}
+
+.formActions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btnGhost {
+  user-select: none;
+}
+
+.btnGhost:disabled,
+.btnSmall:disabled,
+.btnSmallDanger:disabled,
+.iconBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .grid,
+  .skeletonGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .topActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .grid,
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
