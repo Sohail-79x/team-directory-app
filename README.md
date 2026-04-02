@@ -1,14 +1,12 @@
-# Team Directory App
-
 A Full Stack Web Application to manage and display team members with modern UI/UX features.
 
-## 🔹 Tech Stack
+## Tech Stack
 - Frontend: React.js, Framer Motion
 - Backend: Node.js, Express.js
 - Styling: CSS (Dark/Light mode), Premium card UI
 - Version Control: Git & GitHub
 
-## 🔹 Features
+## Features
 - CRUD operations (Create, Read, Update, Delete) for team members
 - Profile pictures with initials fallback
 - Premium card UI with hover and animations
@@ -20,7 +18,7 @@ A Full Stack Web Application to manage and display team members with modern UI/U
 - Fully responsive design (desktop → tablet → mobile)
 - Environment variable support for API URL
 
-## 🔹 Setup / Run Instructions
+## Setup / Run Instructions
 
 
 cd backend
