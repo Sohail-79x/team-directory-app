@@ -22,11 +22,11 @@ A Full Stack Web Application to manage and display team members with modern UI/U
 
 ## 🔹 Setup / Run Instructions
 
-### Backend
+
 cd backend
 node index.js
 
-###frontend
+
 cd frontend
 npm install       # Install dependencies
 # If port 3000 is busy:
